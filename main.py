@@ -1,3 +1,5 @@
+import requests
+
 # 目標網址
 BASE_URL = 'https://www.ptt.cc/bbs/'
 
@@ -19,3 +21,12 @@ target = BASE_URL + target_board + TARGET_PAGE + page_num + HTML_EXT
 HEADERS = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
 }
+
+
+def download_html(target, headers=HEADERS):
+    data = requests.get(target, headers=headers)
+    return data
+
+
+x = download_html(target)
+print(x.content)
